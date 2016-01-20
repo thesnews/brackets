@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  event: MyString
+  start_date: 2016-01-16 17:47:24
+  slug: 
+
+two:
+  name: MyString
+  event: MyString
+  start_date: 2016-01-16 17:47:24
+  slug: 
