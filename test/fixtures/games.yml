@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tournament_id: 1
+  team1_id: 1
+  team2_id: 1
+  score1: 1
+  score2: 1
+  position: 1
+  start_time: 2016-01-30 16:02:29
+  final: false
+
+two:
+  tournament_id: 1
+  team1_id: 1
+  team2_id: 1
+  score1: 1
+  score2: 1
+  position: 1
+  start_time: 2016-01-30 16:02:29
+  final: false
