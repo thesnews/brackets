@@ -6,7 +6,7 @@ FactoryGirl.define do
     start_date Date.new(2013, 3, 1)
   end
 
-  factory :game, class: Tournament::Game do
+  factory :game, class: Game do
     start_time Date.new(2013, 3, 1)
     tournament
   end
