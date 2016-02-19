@@ -7,6 +7,8 @@
   "vendor": {
     "name": "bower-rails generated vendor assets",
     "dependencies": {
+      "backbone": "~1.2.3",
+      "marionette": "~2.4.4",
       "underscore": "~1.8.3"
     }
   }

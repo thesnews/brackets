@@ -15,8 +15,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem "bower-rails", "~> 0.10.0"
-
 gem 'devise'
+gem 'jade', git: 'git://github.com/dukechronicle/jade.git'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/dukechronicle/jade.git
+  revision: 6fe35bd23a0cb77e17679eece2035f32cea430e1
+  specs:
+    jade (0.1.1)
+      execjs
+      sprockets
+      tilt
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -193,6 +202,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   factory_girl_rails
+  jade!
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.2.5)
