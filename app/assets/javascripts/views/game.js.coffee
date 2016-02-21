@@ -1,6 +1,3 @@
-#= require templates/game
-#= require templates/game-preview
-
 window.GameView = Backbone.View.extend
   template: JST['templates/game']
 

@@ -15,4 +15,6 @@
 //= require turbolinks
 //= require underscore/underscore
 //= require backbone/backbone
+//= require jade/runtime
+//= require_tree ./templates
 //= require_tree .

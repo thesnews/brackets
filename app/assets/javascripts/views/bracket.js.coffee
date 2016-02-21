@@ -1,5 +1,3 @@
-#= require templates/bracket
-
 window.BracketView = Backbone.View.extend
   template: JST['templates/bracket']
 

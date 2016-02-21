@@ -1,5 +1,4 @@
 #= require views/game
-#= require templates/bracket-game
 
 window.BracketGameView = GameView.extend
   template: JST['templates/bracket-game']

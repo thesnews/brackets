@@ -16,7 +16,8 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem "bower-rails", "~> 0.10.0"
 gem 'devise'
-gem 'jade', git: 'git://github.com/dukechronicle/jade.git'
+gem 'jade-rails', '~> 1.11.0.0'
+gem 'sprockets', '~> 2.12.4'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
