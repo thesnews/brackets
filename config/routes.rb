@@ -15,9 +15,4 @@ Rails.application.routes.draw do
     resources :brackets, path: 'brackets'
   end
 
-  #resources :tournaments, only: :show do
-  #  resources :brackets
-  #end
-
-  
 end

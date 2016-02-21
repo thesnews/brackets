@@ -14,5 +14,9 @@ class Tournament < ActiveRecord::Base
   def full_name
     "#{name} #{event} #{year}"
   end
+
+  def started?
+    DateTime.now > start_date
+  end
   
 end
