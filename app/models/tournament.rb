@@ -6,5 +6,9 @@ class Tournament < ActiveRecord::Base
   validates :name, presence: true
   validates :event, presence: true
   validates :start_date, presence: true
+
+  def year
+    start_date.year
+  end
   
 end
