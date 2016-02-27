@@ -1,0 +1,20 @@
+- provide(:title, @title) unless content_for? :title
+
+doctype html
+html[class="no-js"]
+    head
+        meta[charset="utf-8"]
+        meta[http-equiv="X-UA-Compatible" content="IE=edge"]
+        meta[name="description" content=""]
+        meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+        title #{yield :title} | The Chronicle
+        = stylesheet_link_tag "admin", :media => "all"
+        = csrf_meta_tags
+
+    body
+      = render 'admin/partials/header'
+      .container-fluid
+        = render 'admin/partials/flash', flash: flash
+        = yield
+      #scripts
+        = yield :scripts
