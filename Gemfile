@@ -16,8 +16,10 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem "bower-rails", "~> 0.10.0"
+gem 'browser'
 gem 'devise'
 gem 'jade-rails', '~> 1.11.0.0'
+gem 'simple_form'
 gem 'sprockets', '~> 2.12.4'
 gem 'will_paginate', '~> 3.0.6'
 
