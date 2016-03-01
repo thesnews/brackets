@@ -1,5 +1,6 @@
 - provide :title, "#{@bracket.user.name}'s #{@tournament.full_name} Bracket"
 
+= render 'partials/flash', flash: flash
 /- if @tournament.started?
 /  p.challenge-text
 /    | Click 

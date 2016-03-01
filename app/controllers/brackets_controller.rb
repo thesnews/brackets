@@ -8,10 +8,10 @@ class BracketsController < ApplicationController
 
     @bracket = @tournament.brackets.includes(:user).find(params[:id])
     if @tournament.started? || @bracket.user == current_user
-      @games = @tournament.games
-        .includes(:team1, :team2)
-        .order(:position)
-        .to_json(include: [:team1, :team2])
+      @bracket = Bracket
+        .includes(:user)
+        .includes(tournament: { games: [:team1, :team2] })
+        .find(@bracket)
     else
       flash[:error] =
         "You may only see other users' brackets once the tournament starts"
@@ -25,12 +25,17 @@ class BracketsController < ApplicationController
     if user_signed_in?
       check_for_existing(@tournament) and return
     end
+
+    if @tournament.started?
+      flash[:error] = "Sorry, you may no longer create a bracket."
+      redirect_to @tournament and return
+    end
+
     @bracket = @tournament.brackets.build(session[:bracket])
+    @bracket.tournament = Tournament
+      .includes(games: [:team1, :team2])
+      .find(@tournament)
     @bracket.picks = JSON.parse(@bracket.picks) if @bracket.picks.is_a? String
-    @games = @tournament.games
-      .includes(:team1, :team2)
-      .order(:position)
-      .to_json(include: [:team1, :team2])
   end
 
   def create
@@ -38,19 +43,37 @@ class BracketsController < ApplicationController
     unless user_signed_in?
       session[:bracket] = params[:bracket]
       session[:user_return_to] =
-        new_bracket_path(@tournament)
+        new_tournament_bracket_path(@tournament)
       authenticate_user!
     end
 
     check_for_existing(@tournament) and return
+    if @tournament.started?
+      flash[:error] = "Sorry, you may no longer create a bracket."
+      redirect_to @tournament and return
+    end
 
     @bracket = current_user.brackets.build(
       tournament: @tournament,
       picks: JSON.parse(params[:bracket][:picks])
     )
     if @bracket.save
-      flash[:success] = "Your bracket has been created"
+      flash[:success] = "Your bracket has been created."
       redirect_to [@tournament, @bracket]
+    else
+      flash[:error] = "There has been an error saving your bracket."
+      redirect_to new_tournament_bracket_path(@tournament)
+    end
+  end
+
+  def update
+    @tournament = Tournament.find(params[:tournament_id])
+    @bracket = @tournament.brackets.includes(:user).find(params[:id])
+    @bracket.picks = params[:bracket][:picks]
+    if @tournament.started? || @bracket.user != current_user
+      head :forbidden
+    elsif @bracket.save
+      render json: @bracket
     else
       render json: @bracket.errors, status: :unprocessable_entity
     end

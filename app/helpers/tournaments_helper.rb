@@ -4,7 +4,12 @@ module TournamentsHelper
   end
 
   def tournament_bracket_json(bracket)
-    bracket.to_json(tournament_bracket_json_options(bracket))
+    bracket
+      .as_json(tournament_bracket_json_options(bracket))
+      .merge({
+        editable: current_user == bracket.user
+      })
+      .to_json
   end
 
   def tournament_json_options
@@ -20,7 +25,6 @@ module TournamentsHelper
   def tournament_bracket_json_options(bracket)
     {
       include: { tournament: tournament_json_options },
-      properties: { editable: ->(bracket) { current_user == bracket.user } }
     }
   end
 end

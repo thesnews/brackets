@@ -1,4 +1,3 @@
-
 class TournamentsController < ApplicationController
   def show
     @tournament = Tournament
