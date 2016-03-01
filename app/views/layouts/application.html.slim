@@ -1,0 +1,11 @@
+- provide(:title, @title) unless content_for? :title
+
+doctype html
+html[class="no-js"]
+    head
+        title #{yield :title} | The Chronicle
+        = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+        = csrf_meta_tags
+    body
+        == yield
+        = javascript_include_tag 'application', 'data-turbolinks-track' => true
