@@ -16,7 +16,7 @@ window.BracketGameView = GameView.extend
     @bracket.teamsInGame(@model)
 
   showPreviewUnlessEditing: ->
-    this.showPreview() unless this.get('editing')
+    this.showPreview() unless @bracket.get('editing')
 
   selectTeam1: ->
     [team1, team2] = this.teams()

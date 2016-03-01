@@ -25,7 +25,7 @@ class BracketsController < ApplicationController
     if user_signed_in?
       check_for_existing(@tournament) and return
     end
-    @bracket = @tournament.brackets.build(session[:tournament_bracket])
+    @bracket = @tournament.brackets.build(session[:bracket])
     @bracket.picks = JSON.parse(@bracket.picks) if @bracket.picks.is_a? String
     @games = @tournament.games
       .includes(:team1, :team2)
@@ -36,9 +36,9 @@ class BracketsController < ApplicationController
   def create
     @tournament = Tournament.find(params[:tournament_id])
     unless user_signed_in?
-      session[:tournament_bracket] = params[:tournament_bracket]
+      session[:bracket] = params[:bracket]
       session[:user_return_to] =
-        new_tournament_bracket_path(@tournament)
+        new_bracket_path(@tournament)
       authenticate_user!
     end
 
@@ -46,11 +46,11 @@ class BracketsController < ApplicationController
 
     @bracket = current_user.brackets.build(
       tournament: @tournament,
-      picks: JSON.parse(params[:tournament_bracket][:picks])
+      picks: JSON.parse(params[:bracket][:picks])
     )
     if @bracket.save
       flash[:success] = "Your bracket has been created"
-      redirect_to [:site, @tournament, @bracket]
+      redirect_to [@tournament, @bracket]
     else
       render json: @bracket.errors, status: :unprocessable_entity
     end
@@ -62,7 +62,7 @@ class BracketsController < ApplicationController
       .find_by_tournament_id(@tournament.id)
     if @bracket
       flash[:notice] = "You may only create one bracket per year"
-      redirect_to [:site, @tournament, @bracket]
+      redirect_to [@tournament, @bracket]
       true
     end
   end
