@@ -7,6 +7,11 @@ class Tournament < ActiveRecord::Base
   validates :event, presence: true
   validates :start_date, presence: true
 
+  validates :region0, presence: true
+  validates :region1, presence: true
+  validates :region2, presence: true
+  validates :region3, presence: true
+
   def year
     start_date.year
   end
