@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303183617) do
+ActiveRecord::Schema.define(version: 20160303190957) do
 
   create_table "brackets", force: :cascade do |t|
     t.integer  "tournament_id"
     t.integer  "user_id"
     t.text     "picks"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "score",         default: 0
   end
 
   add_index "brackets", ["tournament_id", "user_id"], name: "index_brackets_on_tournament_id_and_user_id", unique: true
@@ -63,6 +64,7 @@ ActiveRecord::Schema.define(version: 20160303183617) do
     t.string   "region1"
     t.string   "region2"
     t.string   "region3"
+    t.text     "featured"
   end
 
   add_index "tournaments", ["slug"], name: "index_tournaments_on_slug", unique: true

@@ -1,0 +1,28 @@
+- provide :title, "#{@tournament.full_name} Leaderboard"
+
+.row
+  .col-xs-12.col-md-8
+    h1 Leaderboard
+    table.striped.tournament-leaderboard
+      thead
+        tr
+          th Rank
+          th Player
+          th Champion
+          th Score
+      tbody
+        - if @display_user_bracket
+          tr.user-row.highlighted
+            td= @user_bracket.rank
+            td= link_to current_user.name, [@tournament, @user_bracket]
+            td= @user_bracket.champion.try(:school)
+            td= @user_bracket.score
+        - @brackets.each do |bracket, rank, champion|
+          tr(class=('highlighted' if bracket.user == current_user))
+            td= rank
+            td= link_to bracket.user.name, [@tournament, bracket]
+            td= champion.try(:school)
+            td= bracket.score
+  .col-xs-12.col-md-4
+    - @tournament.featured.shuffle.each do |bracket_info|
+      = render 'tournaments/featured_bracket', tournament: @tournament, bracket_info: bracket_info

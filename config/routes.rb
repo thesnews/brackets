@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   resources :tournaments, only: :show do
     resources :brackets, path: 'brackets'
+    member do
+      get 'challenge'
+      get 'leaderboard'
+    end
   end
 
   namespace :admin do
