@@ -12,7 +12,7 @@ if bracket && !(bracket.isNew() || tournament.started() || bracket.complete())
     if userBracket
       a.button.button-flat-primary.button-large(href=window.location.pathname + "/brackets/" + userBracket) My Bracket
     else if !(tournament.started() || bracket)
-      a.button.button-flat-primary.button-large(href=window.location.pathname + "/brackets/new") Make Bracket
+      a.btn.btn-default.btn-lg.btn-success(href=window.location.pathname + "/brackets/new") Make Bracket
 
     if bracket && !bracket.get('editing') && bracket.editable()
       button.edit.button.button-flat-highlight.button-large(type="button") Edit

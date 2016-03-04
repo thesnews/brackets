@@ -3,5 +3,5 @@
 .rounded
     = form_for [@tournament, @bracket] do |f|
       = f.hidden_field :picks
-      = f.submit "Done", class: "done button button-flat-action button-large"
+      = f.submit "Done", class: "btn btn-default btn-lg btn-success"
     #bracket.bracket(data-bracket=tournament_bracket_json(@bracket))
