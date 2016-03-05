@@ -8,6 +8,7 @@
     "name": "bower-rails generated vendor assets",
     "dependencies": {
       "backbone": "~1.2.3",
+      "jquery-ui": "~1.11.4",
       "marionette": "~2.4.4",
       "underscore": "~1.8.3"
     }
