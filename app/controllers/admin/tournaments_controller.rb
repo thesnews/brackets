@@ -29,8 +29,10 @@ class Admin::TournamentsController < ApplicationController
 
   def update
     @tournament = Tournament.find(params[:id])
+    puts params
+
     if @tournament.update_attributes(tournament_params)
-      redirect_to challenge_site_tournament_url(@tournament, subdomain: 'www')
+      redirect_to admin_tournaments_path
     else
       render 'edit'
     end
@@ -41,7 +43,11 @@ class Admin::TournamentsController < ApplicationController
     params.require(:tournament).permit(
       :name,
       :event,
-      :start_date
+      :start_date,
+      :region0,
+      :region1,
+      :region2,
+      :region3
     )
   end
 end
