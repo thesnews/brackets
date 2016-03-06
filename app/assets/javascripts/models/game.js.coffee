@@ -1,3 +1,5 @@
+#= require date.format
+
 window.Game = Backbone.Model.extend
   team1: ->
     new Team(this.get('team1')) if this.get('team1')

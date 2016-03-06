@@ -11,7 +11,7 @@ window.GameView = Backbone.View.extend
 
   showPreview: ->
     [team1, team2] = this.teams()
-    if team1? and team3?
+    if team1? and team2?
       template = JST['templates/game-preview']
       $dialog = $('<div>').attr('id', 'dialog')
       $dialog.html template(
