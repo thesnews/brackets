@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :tournaments
+    resources :tournaments do
+      resources :teams, only: [:new, :create, :edit, :update]
+    end
   end
 
 end

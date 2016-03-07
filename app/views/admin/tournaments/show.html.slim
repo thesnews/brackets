@@ -1,0 +1,26 @@
+
+h1= @tournament.full_name
+
+h2 Statistics
+p
+  strong Number of brackets:
+  = @tournament.brackets.count
+
+h2 Teams
+= link_to "Add team", new_admin_tournament_team_path(@tournament)
+ul
+- @teams.each do |team|
+  li= link_to team.school, [:edit, :admin, @tournament, team]
+
+h2 Games
+- round = 0
+- @games.each do |game|
+  - if game.round != round
+    br
+    strong Round #{game.round}
+    - round = game.round
+    ul
+  - if defined? game.team1.id
+    li= "Game #{game.id}: (#{game.team1.seed}) #{game.team1.shortname} vs. (#{game.team2.seed}) #{game.team2.shortname}"
+  - else
+    li= "Game #{game.id}: Game #{game.game1.id} winner vs. Game #{game.game2.id} winner"

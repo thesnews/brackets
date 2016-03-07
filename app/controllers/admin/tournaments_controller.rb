@@ -8,6 +8,7 @@ class Admin::TournamentsController < ApplicationController
   def show
     @tournament = Tournament.find(params[:id])
     @teams = @tournament.teams.order(:school)
+    @games = @tournament.games.order(:position)
   end
 
   def new
