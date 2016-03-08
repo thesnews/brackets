@@ -20,7 +20,9 @@ h2 Games
     strong Round #{game.round}
     - round = game.round
     ul
-  - if defined? game.team1.id
-    li= "Game #{game.id}: (#{game.team1.seed}) #{game.team1.shortname} vs. (#{game.team2.seed}) #{game.team2.shortname}"
+  - if game.final
+    li= link_to "Game #{game.id}: (#{game.team1.seed}) #{game.team1.shortname} #{game.score1}  -  (#{game.team2.seed}) #{game.team2.shortname} #{game.score2}", edit_admin_tournament_game_path(game.tournament, game)
+  - elsif !game.team1.nil?
+    li= link_to "Game #{game.id}: (#{game.team1.seed}) #{game.team1.shortname} vs. (#{game.team2.seed}) #{game.team2.shortname}", edit_admin_tournament_game_path(game.tournament, game)
   - else
-    li= "Game #{game.id}: Game #{game.game1.id} winner vs. Game #{game.game2.id} winner"
+    li= link_to "Game #{game.id}: Game #{game.game1.id} winner vs. Game #{game.game2.id} winner", edit_admin_tournament_game_path(game.tournament, game)
