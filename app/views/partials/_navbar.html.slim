@@ -3,3 +3,8 @@ nav.navbar.navbar-default
     .navbar-header
       a.navbar-brand(href='/')
         = image_tag 'dtc-logo.png', class: 'navbar-image', alt: 'The Chronicle'
+    - if user_signed_in?
+      ul.nav.navbar-nav.navbar-right
+        li
+          a(href='#')= current_user.name
+

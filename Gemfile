@@ -20,6 +20,7 @@ gem 'browser'
 gem 'devise'
 gem 'jade-rails', '~> 1.11.0.0'
 gem 'jquery-turbolinks'
+gem 'omniauth-facebook'
 gem 'simple_form'
 gem 'sprockets', '~> 2.12.4'
 gem 'will_paginate', '~> 3.0.6'
@@ -47,6 +48,7 @@ gem 'slim-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'dotenv-rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
 end
