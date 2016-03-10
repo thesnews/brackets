@@ -6,7 +6,7 @@
     = f.input :team2_id, collection: game.tournament.teams, label_method: :shortname, value_method: :id, label: "Team 2"
     = f.input :start_time, as: :datetime, native: browser.chrome?, label: 'Game Start Time'
     = f.input :score1, label: game.team1.nil? ? "Team 1 Score" : "(#{game.team1.seed}) #{game.team1.shortname} Score"
-    = f.input :score1, label: game.team2.nil? ? "Team 2 Score" : "(#{game.team2.seed}) #{game.team2.shortname} Score"
+    = f.input :score2, label: game.team2.nil? ? "Team 2 Score" : "(#{game.team2.seed}) #{game.team2.shortname} Score"
     = f.input :final, label: 'Final score?'
 
   .form-actions
