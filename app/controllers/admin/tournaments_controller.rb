@@ -1,4 +1,4 @@
-class Admin::TournamentsController < ApplicationController
+class Admin::TournamentsController < Admin::BaseController
   layout 'admin'
 
   def index

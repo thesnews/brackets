@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  Roles = %[user admin]
 
   has_many :brackets
 
@@ -8,6 +9,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   devise :omniauthable, :omniauth_providers => [:facebook]
+
+  def admin?
+    role.to_s == 'admin'
+  end
 
   class << self
     def from_omniauth(auth)

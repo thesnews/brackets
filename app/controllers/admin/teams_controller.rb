@@ -1,6 +1,4 @@
-class Admin::TeamsController < ApplicationController
-  layout 'admin'
-
+class Admin::TeamsController < Admin::BaseController
   def new
     @tournament = Tournament.find(params[:tournament_id])
     @team = @tournament.teams.build

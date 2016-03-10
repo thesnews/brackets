@@ -1,6 +1,4 @@
-class Admin::GamesController < ApplicationController
-  layout 'admin'
-
+class Admin::GamesController < Admin::BaseController
   def edit
     @game = Game
       .includes(:tournament)
