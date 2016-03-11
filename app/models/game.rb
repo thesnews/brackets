@@ -75,19 +75,29 @@ class Game < ActiveRecord::Base
 
   def to_s
     team1_str = if team1.nil?
-                  "Game #{game1.id} winner"
+                  if not game1.nil?
+                    "Game #{game1.position} winner"
+                  else
+                    nil
+                  end
                 else
                   "(#{team1.seed}) #{team1.shortname}"
                 end
     team2_str = if team2.nil?
-                  "Game #{game2.id} winner"
+                  if not game2.nil?
+                    "Game #{game2.position} winner"
+                  else
+                    nil
+                  end
                 else
                   "(#{team2.seed}) #{team2.shortname}"
                 end
-    if final
-      "Game #{team1_str} #{score1} - #{team2_str} #{score2}"
+    if team1_str.nil? and team2_str.nil?
+      "Game #{position}"
+    elsif final
+      "Game #{position}: #{team1_str} #{score1} - #{team2_str} #{score2}"
     else
-      "Game #{id}: #{team1_str} vs. #{team2_str}"
+      "Game #{position}: #{team1_str} vs. #{team2_str}"
     end
   end
 

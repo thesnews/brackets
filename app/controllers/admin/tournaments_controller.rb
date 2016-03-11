@@ -18,6 +18,9 @@ class Admin::TournamentsController < Admin::BaseController
   def create
     @tournament = Tournament.new(tournament_params)
     if @tournament.save
+      0.upto(62) do |position|
+        @tournament.games.create!(position: position, start_time: @tournament.start_date).update_teams
+      end
       redirect_to admin_tournaments_path
     else
       render 'new'
