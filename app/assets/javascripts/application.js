@@ -18,5 +18,6 @@
 //= require underscore/underscore
 //= require backbone/backbone
 //= require jade/runtime
-//= require_tree ./templates
-//= require_tree .
+//= require ./initialize
+//= require_tree ./site/templates
+//= require_tree ./site

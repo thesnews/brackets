@@ -1,3 +1,19 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+initialize '#article-scrape', ->
+  $articleUrlInput = $('input#team_article_url')
+  $previewInput = $('textarea#team_preview')
+  $error = $(this).find('.error')
+  $(this).find('a').on 'click', (e) ->
+    articleUrl = $articleUrlInput.val()
+    if not articleUrl
+      return
+    errorTimer = setTimeout( ->
+      console.log('hello')
+      $error.text('Unable to retrieve body text. Check to make sure the URL is valid?')
+    , 2000)
+    $.get({
+      url: "#{articleUrl}.json",
+      dataType: 'jsonp',
+    })
+      .done (data) ->
+        $previewInput.val(unescape(data.article.copy))
+        clearTimeout(errorTimer)

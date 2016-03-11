@@ -1,7 +1,7 @@
-#= require views/game
+#= require site/views/game
 
 window.BracketGameView = GameView.extend
-  template: JST['templates/bracket-game']
+  template: JST['site/templates/bracket-game']
 
   events:
     'dblclick': 'showPreview'

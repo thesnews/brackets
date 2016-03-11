@@ -1,5 +1,5 @@
 window.BracketView = Backbone.View.extend
-  template: JST['templates/bracket']
+  template: JST['site/templates/bracket']
 
   events:
     'click .edit': 'edit'

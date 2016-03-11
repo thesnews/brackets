@@ -1,4 +1,4 @@
-#= require models/game
+#= require site/models/game
 
 Game.Collection = Backbone.Collection.extend
   model: Game
