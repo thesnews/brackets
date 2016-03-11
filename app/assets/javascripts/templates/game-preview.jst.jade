@@ -7,8 +7,8 @@ mixin team(team, num)
     h3.mascot= team.get('mascot')
     .preview
       != team.get('preview')
-      if team.get('article')
-        a(href="/articles/" + team.get('article').slug) Read more
+      if team.get('article_url')
+        a(href=team.get('article_url')) Read more
 
 .game-preview
   +team(team1, 1)

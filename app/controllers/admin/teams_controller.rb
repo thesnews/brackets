@@ -38,7 +38,9 @@ class Admin::TeamsController < Admin::BaseController
       :mascot,
       :seed,
       :region_id,
-      :espn_id
+      :espn_id,
+      :article_url,
+      :preview
     )
   end
 

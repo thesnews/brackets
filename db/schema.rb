@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160310070543) do
+ActiveRecord::Schema.define(version: 20160311051530) do
 
   create_table "brackets", force: :cascade do |t|
     t.integer  "tournament_id"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20160310070543) do
     t.integer  "tournament_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "article_url"
+    t.text     "preview"
   end
 
   add_index "teams", ["tournament_id", "region_id", "seed"], name: "index_teams_on_tournament_id_and_region_id_and_seed", unique: true

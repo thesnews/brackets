@@ -8,9 +8,8 @@
     = f.input :seed
     = f.input :region_id, collection: 0...4
     = f.input :espn_id, label: 'ESPN ID'
-    //= f.input :preview, cols: 5
-    //- team.article_id = team.article && "#{team.article.id} - #{team.article.title}"
-    //= f.association :article, collection: [], as: :string, input_html: { class: 'article-picker input-xlarge' }
+    = f.input :article_url
+    = f.input :preview, cols: 5
 
   .form-actions
     = f.button :submit, class: 'btn btn-large btn-primary'
