@@ -7,7 +7,6 @@ initialize '#article-scrape', ->
     if not articleUrl
       return
     errorTimer = setTimeout( ->
-      console.log('hello')
       $error.text('Unable to retrieve body text. Check to make sure the URL is valid?')
     , 2000)
     $.get({
