@@ -30,7 +30,6 @@ class Admin::TournamentsController < Admin::BaseController
 
   def update
     @tournament = Tournament.find(params[:id])
-    puts params
 
     if @tournament.update_attributes(tournament_params)
       redirect_to admin_tournaments_path

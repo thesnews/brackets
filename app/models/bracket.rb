@@ -47,9 +47,7 @@ class Bracket < ActiveRecord::Base
     games = tournament.games.sort_by(&:position)
     self.score = games.zip(picks).reduce(0) do |score, item|
       game = item[0]; pick = item[1]
-      puts "game #{game.position} #{game.final} winner: #{game.winner.try(:id)} pick: #{pick}"
       if game.final && game.winner.id == pick
-        puts "adding #{score + 2 ** (game.round - 1)}"
         score + 2 ** (game.round - 1)
       else
         score
