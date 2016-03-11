@@ -22,6 +22,9 @@ nav.navbar.navbar-default
         a(href='http://www.dukechronicle.com/section/Topics') Topics
     ul.nav.navbar-nav.navbar-right
       - if user_signed_in?
+        - if current_user.admin?
+          li
+            a(href='/admin') Admin
         li
           a(href='#')= current_user.name
         li
