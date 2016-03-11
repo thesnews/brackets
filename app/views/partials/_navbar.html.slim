@@ -3,8 +3,29 @@ nav.navbar.navbar-default
     .navbar-header
       a.navbar-brand(href='/')
         = image_tag 'dtc-logo.png', class: 'navbar-image', alt: 'The Chronicle'
-    - if user_signed_in?
-      ul.nav.navbar-nav.navbar-right
+    ul.nav.navbar-nav
+      li
+        a(href='http://www.dukechronicle.com/section/news') News
+      li
+        a(href='http://www.dukechronicle.com/section/sports') Sports
+      li
+        a(href='http://www.dukechronicle.com/section/opinion') Opinion
+      li
+        a(href='http://www.dukechronicle.com/section/recess') Recess
+      li
+        a(href='http://www.dukechronicle.com/section/towerview') Towerview
+      li
+        a(href='http://www.dukechronicle.com/blog/blue-zone') Blue Zone
+      li
+        a(href='http://www.dukechronicle.com/multimedia') Photos
+      li
+        a(href='http://www.dukechronicle.com/section/Topics') Topics
+    ul.nav.navbar-nav.navbar-right
+      - if user_signed_in?
         li
           a(href='#')= current_user.name
-
+        li
+          = link_to 'Sign out', destroy_user_session_path, method: :delete
+      - else
+        li
+          a(href=new_user_session_path) Sign in
