@@ -13,8 +13,8 @@ class BracketsController < ApplicationController
         .includes(tournament: { games: [:team1, :team2] })
         .find(@bracket)
     else
-      flash[:error] =
-        "You may only see other users' brackets once the tournament starts"
+      flash[:warning] =
+        "You may only see other users' brackets once the tournament starts."
       @forbidden = true
       render status: :forbidden
     end
@@ -84,7 +84,7 @@ class BracketsController < ApplicationController
     @bracket = current_user.brackets
       .find_by_tournament_id(@tournament.id)
     if @bracket
-      flash[:notice] = "You may only create one bracket per year"
+      flash[:info] = "You may only create one bracket per year"
       redirect_to [@tournament, @bracket]
       true
     end

@@ -9,5 +9,6 @@ html[class="no-js"]
   body
     = render 'partials/navbar'
     .container
+      = render 'partials/flash', flash: flash
       == yield
     = javascript_include_tag 'application', 'data-turbolinks-track' => true

@@ -22,7 +22,7 @@ if bracket && !(bracket.isNew() || tournament.started() || bracket.complete())
         = bracket.get('score')
 
     if bracket && bracket.get('editing') && !bracket.isNew()
-      button.done.button.button-flat-action.button-large(type="button")
+      button.done.btn.btn-default.btn-lg.btn-success(type="button")
         = bracket.complete() ? "Done" : "Save"
 
   .clearfix
