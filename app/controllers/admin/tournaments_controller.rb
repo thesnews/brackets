@@ -6,7 +6,7 @@ class Admin::TournamentsController < Admin::BaseController
   end
 
   def show
-    @tournament = Tournament.find(params[:id])
+    @tournament = Tournament.friendly.find(params[:id])
     @teams = @tournament.teams.order(:school)
     @games = @tournament.games.order(:position)
   end
@@ -25,11 +25,11 @@ class Admin::TournamentsController < Admin::BaseController
   end
 
   def edit
-    @tournament = Tournament.find(params[:id])
+    @tournament = Tournament.friendly.find(params[:id])
   end
 
   def update
-    @tournament = Tournament.find(params[:id])
+    @tournament = Tournament.friendly.find(params[:id])
 
     if @tournament.update_attributes(tournament_params)
       redirect_to admin_tournaments_path

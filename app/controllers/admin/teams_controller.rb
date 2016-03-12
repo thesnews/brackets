@@ -1,11 +1,11 @@
 class Admin::TeamsController < Admin::BaseController
   def new
-    @tournament = Tournament.find(params[:tournament_id])
+    @tournament = Tournament.friendly.find(params[:tournament_id])
     @team = @tournament.teams.build
   end
 
   def create
-    @tournament = Tournament.find(params[:tournament_id])
+    @tournament = Tournament.friendly.find(params[:tournament_id])
     @team = @tournament.teams.build(team_params)
     if @team.save
       redirect_to [:admin, @team.tournament]

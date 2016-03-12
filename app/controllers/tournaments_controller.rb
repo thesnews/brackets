@@ -2,7 +2,7 @@ class TournamentsController < ApplicationController
   def show
     @tournament = Tournament
       .includes(games: [:team1, :team2])
-      .find(params[:id])
+      .friendly.find(params[:id])
 
     if user_signed_in?
       @bracket = @tournament.brackets.find_by_user_id(current_user)
@@ -10,11 +10,11 @@ class TournamentsController < ApplicationController
   end
 
   def challenge
-    @tournament = Tournament.find(params[:id])
+    @tournament = Tournament.friendly.find(params[:id])
   end
 
   def leaderboard
-    @tournament = Tournament.find(params[:id])
+    @tournament = Tournament.friendly.find(params[:id])
     @brackets = @tournament.top_brackets(53)
     fetch_featured_brackets(@tournament)
     if user_signed_in?

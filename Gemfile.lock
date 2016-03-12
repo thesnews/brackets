@@ -77,6 +77,8 @@ GEM
       railties (>= 3.0.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hashie (3.3.1)
@@ -243,6 +245,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   factory_girl_rails
+  friendly_id (~> 5.1.0)
   jade-rails (~> 1.11.0.0)
   jbuilder (~> 2.0)
   jquery-rails

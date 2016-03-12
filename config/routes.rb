@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'static_pages#index'
 
-  resources :tournaments, only: :show do
-    resources :brackets, path: 'brackets'
+  resources :tournaments, only: :show, id: Tournament::SLUG_PATTERN
+  resources :tournaments, only: :none do
+    resources :brackets, path: 'brackets',
+        tournament_id: Tournament::SLUG_PATTERN
     member do
       get 'challenge'
       get 'leaderboard'
@@ -19,9 +21,12 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'tournaments#index'
 
-    resources :tournaments do
-      resources :teams, only: [:new, :create, :edit, :update]
-      resources :games, only: [:edit, :update]
+    resources :tournaments, id: Tournament::SLUG_PATTERN
+    resources :tournaments, only: :none do
+      resources :teams, only: [:new, :create, :edit, :update],
+        tournament_id: Tournament::SLUG_PATTERN
+      resources :games, only: [:edit, :update],
+        tournament_id: Tournament::SLUG_PATTERN
     end
   end
 

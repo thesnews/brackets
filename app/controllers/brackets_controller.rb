@@ -3,7 +3,7 @@ class BracketsController < ApplicationController
   before_filter :authenticate_user!, only: [:edit, :update, :destroy]
 
   def show
-    @tournament = Tournament.find(params[:tournament_id])
+    @tournament = Tournament.friendly.find(params[:tournament_id])
     authenticate_user! unless @tournament.started?
 
     @bracket = @tournament.brackets.includes(:user).find(params[:id])
@@ -21,7 +21,7 @@ class BracketsController < ApplicationController
   end
 
   def new
-    @tournament = Tournament.find(params[:tournament_id])
+    @tournament = Tournament.friendly.find(params[:tournament_id])
     if user_signed_in?
       check_for_existing(@tournament) and return
     end
@@ -39,7 +39,7 @@ class BracketsController < ApplicationController
   end
 
   def create
-    @tournament = Tournament.find(params[:tournament_id])
+    @tournament = Tournament.friendly.find(params[:tournament_id])
     unless user_signed_in?
       session[:bracket] = params[:bracket]
       session[:user_return_to] =
@@ -67,7 +67,7 @@ class BracketsController < ApplicationController
   end
 
   def update
-    @tournament = Tournament.find(params[:tournament_id])
+    @tournament = Tournament.friendly.find(params[:tournament_id])
     @bracket = @tournament.brackets.includes(:user).find(params[:id])
     @bracket.picks = params[:bracket][:picks]
     if @tournament.started? || @bracket.user != current_user

@@ -1,4 +1,9 @@
 class Tournament < ActiveRecord::Base
+  SLUG_PATTERN = %r([a-z_\-\d]+-\d{4})
+  extend FriendlyId
+
+  friendly_id :name_and_event, use: [:slugged]
+
   has_many :teams, dependent: :destroy
   has_many :games, dependent: :destroy
   has_many :brackets, dependent: :destroy
@@ -34,7 +39,11 @@ class Tournament < ActiveRecord::Base
   end
 
   def normalize_friendly_id(s)
-    "#{super}/#{year}"
+    "#{super}-#{year}"
+  end
+
+  def should_generate_new_friendly_id?
+    name_changed? or event_changed? or start_date_changed? or super
   end
 
   def top_brackets(limit)

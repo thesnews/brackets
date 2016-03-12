@@ -18,6 +18,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem "bower-rails", "~> 0.10.0"
 gem 'browser'
 gem 'devise'
+gem 'friendly_id', '~> 5.1.0'
 gem 'jade-rails', '~> 1.11.0.0'
 gem 'jquery-turbolinks'
 gem 'omniauth-facebook'
