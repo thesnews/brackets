@@ -73,6 +73,24 @@ class Game < ActiveRecord::Base
     end
   end
 
+  def to_s
+    team1_str = if team1.nil?
+                  "Game #{game1.id} winner"
+                else
+                  "(#{team1.seed}) #{team1.shortname}"
+                end
+    team2_str = if team2.nil?
+                  "Game #{game2.id} winner"
+                else
+                  "(#{team2.seed}) #{team2.shortname}"
+                end
+    if final
+      "Game #{team1_str} #{score1} - #{team2_str} #{score2}"
+    else
+      "Game #{id}: #{team1_str} vs. #{team2_str}"
+    end
+  end
+
   private
   def first_game_in_next_round
     64 - 2 ** (6 - round)
