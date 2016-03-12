@@ -7,7 +7,7 @@
     = f.input :start_time, as: :datetime, input_html: {class: ''}, native: browser.chrome?, label: 'Game Start Time'
     = f.input :score1, label: game.team1.nil? ? "Team 1 Score" : "(#{game.team1.seed}) #{game.team1.shortname} Score"
     = f.input :score2, label: game.team2.nil? ? "Team 2 Score" : "(#{game.team2.seed}) #{game.team2.shortname} Score"
-    = f.input :final, label: 'Final score?', input_html: {class: ''}
+    = f.input :final, label: 'Final score?', input_html: {class: ''}, wrapper: :inline_checkbox
 
   .form-actions
     = f.button :submit, class: 'btn btn-large btn-primary'
