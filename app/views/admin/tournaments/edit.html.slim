@@ -1,3 +1,5 @@
 - provide :title, "Editing #{@tournament.full_name}"
 
-= render 'admin/tournaments/form', form_title: "Edit #{@tournament.full_name}", tournament: @tournament
+.row
+  .col-xs-8
+    = render 'admin/tournaments/form', form_title: "Edit #{@tournament.full_name}", tournament: @tournament

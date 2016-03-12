@@ -3,7 +3,7 @@
 doctype html
 html[class="no-js"]
   head
-    title #{yield :title} | The Chronicle
+    title= full_title(yield(:title))
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
