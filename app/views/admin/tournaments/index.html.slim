@@ -1,6 +1,8 @@
+- provide :title, 'Tournaments'
 .row
   .col-xs-12
     h1 Tournaments
+    = link_to 'Create Tournament', new_admin_tournament_path
     table.table
       thead
         th Name
@@ -8,7 +10,7 @@
       tbody
         - @tournaments.each do |tournament|
           tr
-            td= link_to tournament.full_name, admin_tournament_path(tournament)
+            td= link_to tournament.full_name, tournament
             td.tournament-actions
               = link_to 'Manage Games', [:admin, tournament], class: 'btn btn-default btn-xs'
               = link_to 'Edit', [:edit, :admin, tournament], class: 'btn btn-default btn-xs'

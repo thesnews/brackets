@@ -24,7 +24,7 @@ class Admin::TeamsController < Admin::BaseController
     @team = Team.find(params[:id])
     if @team.update_attributes(team_params)
       flash[:success] = "Your team has been updated."
-      redirect_to [:edit, :admin, @team.tournament, @team]
+      redirect_to [:admin, @team.tournament]
     else
       render 'edit'
     end
