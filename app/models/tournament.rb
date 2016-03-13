@@ -8,6 +8,8 @@ class Tournament < ActiveRecord::Base
   has_many :games, dependent: :destroy
   has_many :brackets, dependent: :destroy
 
+  scope :live, -> { where(live: true) }
+
   validates :name, presence: true
   validates :event, presence: true
   validates :start_date, presence: true

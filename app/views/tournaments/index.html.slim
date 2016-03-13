@@ -1,0 +1,16 @@
+h1 Tournaments
+
+table.table
+  thead
+    th Name
+    th Start Time
+  tbody
+    - if @tournaments.empty?
+      tr
+        td.no-tournaments(colspan=2) No tournaments!
+    - else
+      - @tournaments.each do |tournament|
+        tr
+          td
+            = link_to tournament.full_name, tournament
+          td= tournament.start_date.strftime("%A, %B %e %Y")

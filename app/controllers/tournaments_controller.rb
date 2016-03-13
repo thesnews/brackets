@@ -1,6 +1,11 @@
 class TournamentsController < ApplicationController
+  def index
+    @tournaments = Tournament.live
+  end
+
   def show
     @tournament = Tournament
+      .live
       .includes(games: [:team1, :team2])
       .friendly.find(params[:id])
 
@@ -10,11 +15,11 @@ class TournamentsController < ApplicationController
   end
 
   def challenge
-    @tournament = Tournament.friendly.find(params[:id])
+    @tournament = Tournament.friendly.live..find(params[:id])
   end
 
   def leaderboard
-    @tournament = Tournament.friendly.find(params[:id])
+    @tournament = Tournament.friendly.live.find(params[:id])
     @brackets = @tournament.top_brackets(53)
     fetch_featured_brackets(@tournament)
     if user_signed_in?

@@ -50,7 +50,8 @@ class Admin::TournamentsController < Admin::BaseController
       :region0,
       :region1,
       :region2,
-      :region3
+      :region3,
+      :live
     )
   end
 end
