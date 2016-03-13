@@ -28,6 +28,8 @@ class Tournament < ActiveRecord::Base
   # }
   serialize :featured, JSON
 
+  after_initialize { self.featured ||= [] }
+
   def year
     start_date.year
   end
