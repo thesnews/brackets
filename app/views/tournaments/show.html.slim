@@ -1,5 +1,10 @@
 - provide :title, @tournament.full_name
 
+- if not @tournament.live? and current_user.try(:role) == 'admin'
+  .alert.alert-danger
+    | This tournament is not live! 
+    span= link_to 'Edit Tournament', edit_admin_tournament_path(@tournament)
+
 .row
   .col-xs-12
     - if @tournament.started?

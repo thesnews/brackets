@@ -7,6 +7,17 @@
     p
       strong Number of brackets: 
       = @tournament.brackets.count
+      - if @tournament.live?
+        = link_to '(Leaderboard)', leaderboard_tournament_path(@tournament)
+    ul.tournament-manage-actions
+      - if @tournament.live?
+        li
+          = link_to 'Show Tournament', tournament_path(@tournament), class: 'btn btn-default btn-sm'
+      - else
+        li
+          = link_to 'Preview Tournament', tournament_path(@tournament), class: 'btn btn-default btn-sm'
+      li
+        = link_to 'Edit Tournament', edit_admin_tournament_path(@tournament), class: 'btn btn-default btn-sm'
 
 .row
   .col-xs-12.col-md-6

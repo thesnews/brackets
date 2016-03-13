@@ -11,7 +11,11 @@
       tbody
         - @tournaments.each do |tournament|
           tr
-            td= link_to tournament.full_name, tournament
+            td
+              - if tournament.live?
+                = link_to tournament.full_name, tournament
+              - else
+                = link_to "#{tournament.full_name} (Preview)", tournament
             - if tournament.live
               td.tournament-live= link_to 'Live', tournament
             - else

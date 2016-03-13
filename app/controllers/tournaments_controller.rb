@@ -5,9 +5,12 @@ class TournamentsController < ApplicationController
 
   def show
     @tournament = Tournament
-      .live
       .includes(games: [:team1, :team2])
       .friendly.find(params[:id])
+
+    if not @tournament.live? and current_user.try(:role) != 'admin'
+      raise ActiveRecord::RecordNotFound
+    end
 
     if user_signed_in?
       @bracket = @tournament.brackets.find_by_user_id(current_user)
@@ -15,7 +18,7 @@ class TournamentsController < ApplicationController
   end
 
   def challenge
-    @tournament = Tournament.friendly.live..find(params[:id])
+    @tournament = Tournament.friendly.live.find(params[:id])
   end
 
   def leaderboard
