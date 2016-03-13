@@ -2,5 +2,12 @@
 
 .row
   .col-xs-12
+    - if @tournament.started?
+      p.challenge-text
+        | Click 
+        = link_to "here", leaderboard_tournament_path(@tournament)
+        |  to see the Chronicle bracket challenge leaderboard.
+.row
+  .col-xs-12
     h1.tournament-title= @tournament.full_name
     #bracket.tournament(data-tournament=tournament_json(@tournament))

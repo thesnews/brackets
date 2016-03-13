@@ -1,6 +1,14 @@
 - provide :title, "Create an #{@tournament.full_name} Bracket"
 
-.rounded
+.row
+  .col-xs-12
+    ol.breadcrumb
+      li
+        = link_to @tournament.full_name, @tournament
+      li New Bracket
+.row
+  .col-xs-12
+    h1 New Bracket
     = form_for [@tournament, @bracket] do |f|
       = f.hidden_field :picks
       = f.submit "Done", class: "btn btn-default btn-lg btn-success"

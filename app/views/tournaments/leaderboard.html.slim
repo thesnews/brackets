@@ -1,6 +1,12 @@
 - provide :title, "#{@tournament.full_name} Leaderboard"
 
 .row
+  .col-xs-12
+    ol.breadcrumb
+      li
+        = link_to @tournament.full_name, @tournament
+      li Leaderboard
+.row
   .col-xs-12.col-md-8
     h1 Leaderboard
     table.table.table-striped.tournament-leaderboard
