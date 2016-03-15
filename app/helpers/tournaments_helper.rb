@@ -27,4 +27,13 @@ module TournamentsHelper
       include: { tournament: tournament_json_options },
     }
   end
+
+  def bracket_freeze_time_in_words(tournament)
+    time_ago = time_ago_in_words(tournament.start_date)
+    if tournament.started?
+      "Brackets froze #{time_ago} ago"
+    else
+      "Brackets freeze in #{time_ago}"
+    end
+  end
 end

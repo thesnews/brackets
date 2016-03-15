@@ -7,6 +7,7 @@
       thead
         th Name
         th
+        th
         th Actions
       tbody
         - @tournaments.each do |tournament|
@@ -20,6 +21,9 @@
               td.tournament-live= link_to 'Live', tournament
             - else
               td.tournament-not-live= link_to 'Not Live', [:edit, :admin, tournament]
+            td
+              = bracket_freeze_time_in_words(tournament)
+              = " (#{tournament.start_date.strftime("%A at %l:%M %P")})"
             td.tournament-actions
               = link_to 'Manage Games', [:admin, tournament], class: 'btn btn-default btn-xs'
               = link_to 'Edit', [:edit, :admin, tournament], class: 'btn btn-default btn-xs'

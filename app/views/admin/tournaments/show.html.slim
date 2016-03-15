@@ -9,6 +9,7 @@
       = @tournament.brackets.count
       - if @tournament.live?
         = link_to '(Leaderboard)', leaderboard_tournament_path(@tournament)
+    p= bracket_freeze_time_in_words(@tournament)
     ul.tournament-manage-actions
       - if @tournament.live?
         li
