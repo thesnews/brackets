@@ -51,7 +51,8 @@ class Admin::TournamentsController < Admin::BaseController
       :region1,
       :region2,
       :region3,
-      :live
+      :live,
+      :challenge_text
     )
   end
 end
