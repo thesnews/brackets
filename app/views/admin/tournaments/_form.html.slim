@@ -6,7 +6,7 @@
       .form-inputs
         = f.input :name, hint: "eg. NCAA"
         = f.input :event, hint: "eg. Men's Basketball"
-        = f.input :start_date, as: :date, input_html: {class: ''}, native: browser.chrome?
+        = f.input :start_date, as: :datetime, input_html: {class: ''}, native: browser.chrome?
         = f.input :region0, label: "Top Left Region"
         = f.input :region1, label: "Bottom Left Region"
         = f.input :region2, label: "Top Right Region"
