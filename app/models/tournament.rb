@@ -1,5 +1,5 @@
 class Tournament < ActiveRecord::Base
-  SLUG_PATTERN = %r([a-z_\-\d]+-\d{4})
+  SLUG_PATTERN = %r([a-z_\-\d]+-\d{4}(-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})?)
   extend FriendlyId
 
   friendly_id :name_and_event, use: [:slugged]

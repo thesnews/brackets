@@ -34,7 +34,7 @@ class BracketsController < ApplicationController
     @bracket = @tournament.brackets.build(session[:bracket])
     @bracket.tournament = Tournament
       .includes(games: [:team1, :team2])
-      .find(@tournament)
+      .find(@tournament.id)
     @bracket.picks = JSON.parse(@bracket.picks) if @bracket.picks.is_a? String
   end
 
