@@ -45,6 +45,11 @@ window.Bracket = Backbone.Model.extend
     tournamentStart = new Date(this.get('tournament').start_date)
     this.get('editable') and Date.now() < tournamentStart
 
+  toJSON: ->
+    attrClone = _.clone(this.attributes)
+    attrClone.picks = JSON.stringify(attrClone.picks)
+    attrClone
+
   ##
   # Utility to make testing easier
   #

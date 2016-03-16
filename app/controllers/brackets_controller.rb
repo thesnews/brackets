@@ -69,7 +69,7 @@ class BracketsController < ApplicationController
   def update
     @tournament = Tournament.friendly.find(params[:tournament_id])
     @bracket = @tournament.brackets.includes(:user).find(params[:id])
-    @bracket.picks = params[:bracket][:picks]
+    @bracket.picks = JSON.parse(params[:bracket][:picks])
     if @tournament.started? || @bracket.user != current_user
       head :forbidden
     elsif @bracket.save
