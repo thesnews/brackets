@@ -5,7 +5,7 @@ mixin region(id)
       .round(class="round-" + round)
 
 if bracket && !(bracket.isNew() || tournament.started() || bracket.complete())
-  .notice Your bracket is incomplete. Please make all selections before the tournament begins.
+  .alert.alert-warning Your bracket is incomplete. Please make all selections before the tournament begins.
 
 .bracket-inner
   .actions
