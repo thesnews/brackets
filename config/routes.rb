@@ -29,4 +29,7 @@ Rails.application.routes.draw do
     end
   end
 
+  # Lowest priority catch-all, redirect to 404 page
+  get '*path', :to => 'application#not_found'
+
 end
