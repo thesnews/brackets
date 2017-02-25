@@ -6,8 +6,6 @@
       li
         = link_to @tournament.full_name, @tournament
       li= "#{@bracket.user.name}'s #{@tournament.full_name} Bracket"
-  .col-xs-3
-    = image_tag 'lead-ad.png'
 - if @tournament.started?
   .row
     .col-xs-12
