@@ -8,13 +8,13 @@
           li
             = link_to @tournament.full_name, @tournament
           li= "#{@bracket.user.name}'s #{@tournament.full_name} Bracket"
-  - if @tournament.started?
-    .row
-      .col-xs-12
-        p.challenge-text
-          | Click 
-          = link_to "here", leaderboard_tournament_path(@tournament)
-          |  to see the Chronicle bracket challenge leaderboard.
+    - if @tournament.started?
+      .row
+        .col-xs-12
+          p.challenge-text
+            | Click 
+            = link_to "here", leaderboard_tournament_path(@tournament)
+            |  to see the Chronicle bracket challenge leaderboard.
   .col-xs-3
     = image_tag 'lead-ad.png', class: 'navbar-image', alt: 'Duke Stores'
 - unless @forbidden
