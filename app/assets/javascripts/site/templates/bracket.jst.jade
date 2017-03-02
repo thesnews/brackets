@@ -1,7 +1,7 @@
 mixin region(id)
   .region(class="region-" + id)
     h3.region-name= tournament.get('region' + id)
-    if (tournament.'region_sponsor' + id)
+    if typeof(tournament.('region_sponsor' + id)) !== 'undefined'
       h6= tournament.get('region_sponsor' + id)
     each round in (id < 2 ? [1, 2, 3, 4] : [4, 3, 2, 1])
       .round(class="round-" + round)
