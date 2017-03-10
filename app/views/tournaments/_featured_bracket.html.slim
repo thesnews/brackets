@@ -1,7 +1,7 @@
 .featured-bracket
   h3.name= link_to bracket_info['bracket'].user.name, [tournament, bracket_info['bracket']]
   p.title= bracket_info['position']
-  img src=bracket_info['headshot']
+  img.headshot src=bracket_info['headshot']
   p
     strong Champion: 
     = bracket_info['champion'].try(:school)
