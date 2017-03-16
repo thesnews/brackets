@@ -23,7 +23,7 @@ class TournamentsController < ApplicationController
 
   def leaderboard
     @tournament = Tournament.friendly.live.find(params[:id])
-    @brackets = @tournament.top_brackets(53)
+    @brackets = @tournament.top_brackets(100)
     fetch_featured_brackets(@tournament)
     if user_signed_in?
       @user_bracket = @tournament.brackets.find_by_user_id(current_user.id)
