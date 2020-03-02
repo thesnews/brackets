@@ -30,12 +30,55 @@ The admin console at `/admin` can be accessed when signed in as a user with an
 
 Deployment
 ----------
-This application is currently deployed through Heroku. Contact [Michael
-Lai][mlai] to get access to the app used in production. We use a [slightly
-modified buildpack][ruby-bower-buildpack] for ruby apps with bower, which has
-already been set up in production.
 
-[bower]: https://bower.io/
-[mlai]: https://github.com/themichaellai
-[ruby-bower-buildpack]: https://github.com/themichaellai/heroku-buildpack-ruby-bower
-[seeds]: https://github.com/dukechronicle/brackets/blob/60d7aa3926ecbc012afd54ca6ede0189cb97103a/db/seeds.rb
+Running on latest Ubuntu LTS, fresh install.
+
+First, upgrade packages:
+
+```
+apt update
+apt dist-upgrade -y
+```
+
+Then install necessary packages for bundler and rake:
+
+```
+apt install ruby ruby-bundler ruby-dev
+apt install make automake gcc zlib1g-dev libpq-dev libsqlite3-dev cmake
+apt install postgresql
+apt install nodejs npm
+```
+
+Install bower:
+
+```
+npm install -g bower
+```
+
+Set up your reverse proxy:
+
+```
+server {
+    listen 80;
+
+    location / {
+        proxy_pass http://127.0.0.1:9292;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_read_timeout 86400; # neccessary to avoid websocket timeout disconnect
+        proxy_redirect off;
+    }
+}
+```
+
+Then, run through setup above and start your server:
+
+```
+rackup -Ilib config.ru -E production -D
+```
