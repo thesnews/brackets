@@ -1,26 +1,11 @@
 nav.navbar.navbar-default
   .container
     .navbar-header
-      a.navbar-brand(href='http://www.dukechronicle.com')
-        = image_tag 'dtc-logo.png', class: 'navbar-image', alt: 'The Chronicle'
+      a.navbar-brand(href='https://www.dukechronicle.com')
+        = image_tag 'https://ds4q8c259towh.cloudfront.net/69ceec8ec1aa4fdd579329a7bd893b7a/dist/img/dtc-logo.png', class: 'navbar-image', alt: 'The Chronicle'
     ul.nav.navbar-nav
       li
-        a(href='http://www.dukechronicle.com/section/news') News
-      li
-        a(href='http://www.dukechronicle.com/section/sports') Sports
-      li
-        a(href='http://www.dukechronicle.com/section/opinion') Opinion
-      li
-        a(href='http://www.dukechronicle.com/section/recess') Recess
-      li
-        a(href='http://www.dukechronicle.com/section/towerview') Towerview
-      li
-        a(href='http://www.dukechronicle.com/blog/blue-zone') Blue Zone
-      li
-        a(href='http://www.dukechronicle.com/multimedia') Photos
-      li
-        a(href='http://www.dukechronicle.com/section/Topics') Topics
-    ul.nav.navbar-nav.navbar-right
+        a(href='/') Home
       - if user_signed_in?
         - if current_user.admin?
           li
@@ -32,3 +17,6 @@ nav.navbar.navbar-default
       - else
         li
           a(href=new_user_session_path) Sign in
+    ul.nav.navbar-nav.navbar-right
+      li
+        a(href='https://www.dukechronicle.com') Back to The Chronicle &#187;
