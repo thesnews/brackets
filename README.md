@@ -31,7 +31,7 @@ The admin console at `/admin` can be accessed when signed in as a user with an
 Deployment
 ----------
 
-Running on latest Ubuntu LTS, fresh install.
+Originally designed to deploy to Heroku, but modified for latest Ubuntu LTS, fresh install.
 
 First, upgrade packages:
 
