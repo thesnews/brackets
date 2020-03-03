@@ -77,8 +77,27 @@ server {
 }
 ```
 
-Then, run through setup above and start your server:
+If you're running in production, you'll also need to set up Postgres:
 
 ```
+sudo -u postgres -s
+DB_USER=[REDACTED]
+DB_PASS=[REDACTED]
+DB_NAME=[REDACTED]
+psql -c "CREATE USER $DB_USER WITH PASSWORD '$DB_PASS';"
+psql -c "ALTER ROLE $DB_USER SET client_encoding TO 'UTF8';"
+psql -c "CREATE DATABASE $DB_NAME WITH OWNER $DB_USER;"
+psql -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;"
+```
+
+Then, run through setup above and start your server with the proper environment vars:
+
+```
+export GOOGLE_CLIENT_ID=[REDACTED]
+export GOOGLE_CLIENT_SECRET=[REDACTED]
+export FACEBOOK_APP_ID=[REDACTED]
+export FACEBOOK_APP_SECRET=[REDACTED]
+export SECRET_KEY_BASE=[REDACTED]
+export SECRET_TOKEN=[REDACTED]
 rackup -Ilib config.ru -E production -D
 ```
